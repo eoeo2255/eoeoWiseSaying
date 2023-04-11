@@ -1,4 +1,4 @@
-package org.example.wiseSaying;
+package org.example.wiseSaying.wiseSay.Entity;
 
 public class WiseSay {
     private int index;

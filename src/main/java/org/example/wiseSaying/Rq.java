@@ -22,6 +22,10 @@ public class Rq {
         for (String param : params) {
             String[] paramBits = param.split("=", 2);
 
+            if (paramBits.length == 1) {
+                continue;
+            }
+
             String key = paramBits[0];
             String value = paramBits[1];
             parameter.put(key, value);
@@ -39,4 +43,13 @@ public class Rq {
     public String getParameter(String key) {
         return parameter.get(key);
     }
+
+    public int getParameterInt(String key, int defaultValue) {
+        try {
+            return Integer.parseInt(getParameter(key));
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
 }

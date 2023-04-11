@@ -1,18 +1,18 @@
 package org.example.wiseSaying.wiseSay.controller;
 
 import org.example.wiseSaying.Container;
-import org.example.wiseSaying.WiseSay;
+import org.example.wiseSaying.Rq;
+import org.example.wiseSaying.wiseSay.Entity.WiseSay;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class WiseSayController {
     private int index;
     private List<WiseSay> book;
 
     public WiseSayController() {
-        this.index =1;
+        this.index = 1;
         this.book = new ArrayList<>();
     }
 
@@ -39,4 +39,26 @@ public class WiseSayController {
             System.out.printf("%d / %s / %s\n", wiseSay.getIndex(), wiseSay.getAuthor(), wiseSay.getContent());
         }
     }
+
+    public void remove(Rq rq) {
+        int index = rq.getParameterInt("index", -1);
+
+        if (index == -1) {
+            System.out.println("id는 정수로 입력해주세요.");
+        }
+        WiseSay wiseSay = findBtIndex(index);
+        book.remove(wiseSay);
+        System.out.printf("%d번 명언이 삭제되었습니다.\n", index);
+    }
+
+    public WiseSay findBtIndex(int index) {
+        for (WiseSay wiseSay : book) {
+            if (wiseSay.getIndex() == index) {
+                return wiseSay;
+            }
+        }
+        return null;
+    }
+
+
 }
