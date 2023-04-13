@@ -15,13 +15,10 @@ public class Rq {
         if (cmdBits.length == 1) {
             return;
         }
-        String cmdBit = cmdBits[1];
-
-        String[] params = cmdBit.split("&");
+        String[] params = cmdBits[1].split("&");
 
         for (String param : params) {
             String[] paramBits = param.split("=", 2);
-
             if (paramBits.length == 1) {
                 continue;
             }

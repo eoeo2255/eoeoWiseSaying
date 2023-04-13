@@ -24,6 +24,7 @@ public class App {
                 case "등록" -> wiseSayController.write();
                 case "목록" -> wiseSayController.list();
                 case "삭제" -> wiseSayController.remove(rq);
+                case "수정" -> wiseSayController.update(rq);
             }
         }
     }

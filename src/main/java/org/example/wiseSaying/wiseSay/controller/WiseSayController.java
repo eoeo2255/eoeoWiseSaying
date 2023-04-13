@@ -36,18 +36,25 @@ public class WiseSayController {
         System.out.println("-".repeat(30));
 
         for (WiseSay wiseSay : book) {
-            System.out.printf("%d / %s / %s\n", wiseSay.getIndex(), wiseSay.getAuthor(), wiseSay.getContent());
+            System.out.printf("%d / %s / %s\n", wiseSay.getIndex(), wiseSay.getContent(), wiseSay.getAuthor());
         }
     }
 
     public void remove(Rq rq) {
-        int index = rq.getParameterInt("index", -1);
+        int index = rq.getParameterInt("id", -1);
 
         if (index == -1) {
             System.out.println("id는 정수로 입력해주세요.");
+            return;
         }
         WiseSay wiseSay = findBtIndex(index);
+
+        if (wiseSay == null) {
+            System.out.printf("%d번 명언은 존재하지 않습니다.\n",index);
+            return;
+        }
         book.remove(wiseSay);
+
         System.out.printf("%d번 명언이 삭제되었습니다.\n", index);
     }
 
@@ -60,5 +67,32 @@ public class WiseSayController {
         return null;
     }
 
+    public void update(Rq rq) {
+        int index = rq.getParameterInt("id", -1);
 
+        if (index==-1) {
+            System.out.println("id는 정수값으로 입력해주세요.");
+            return;
+        }
+
+        WiseSay wiseSay = findBtIndex(index);
+
+        if (wiseSay == null) {
+            System.out.printf("%d번 명언은 존재하지 않습니다.\n", index);
+            return;
+        }
+
+        System.out.printf("기존 명언 : %s\n", wiseSay.getContent());
+        System.out.print("명언 : ");
+        String content = Container.getSc().nextLine().trim();
+
+        System.out.printf("기존 저자 : %s\n", wiseSay.getAuthor());
+        System.out.print("저자 : ");
+        String author = Container.getSc().nextLine().trim();
+
+        wiseSay.setContent(content);
+        wiseSay.setAuthor(author);
+
+        System.out.printf("%d번 명언이 수정되었습니다.\n",index);
+    }
 }
