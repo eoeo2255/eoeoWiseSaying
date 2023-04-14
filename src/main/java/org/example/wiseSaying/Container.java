@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Container {
     private static Scanner sc;
 
+    public static Util util;
+
     public static void init() {
         sc = new Scanner(System.in);
     }
@@ -15,5 +17,9 @@ public class Container {
 
     public static Scanner getSc() {
         return sc;
+    }
+
+    public static Util getUtil() {
+        return util;
     }
 }

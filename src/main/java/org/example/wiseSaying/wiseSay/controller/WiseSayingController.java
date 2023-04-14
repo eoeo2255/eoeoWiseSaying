@@ -39,6 +39,11 @@ public class WiseSayingController {
         }
     }
 
+    public List<WiseSay> getList() {
+        return wiseSayingService.findAll();
+    }
+
+
     public void remove(Rq rq) {
         int index = rq.getParameterInt("id", -1);
 

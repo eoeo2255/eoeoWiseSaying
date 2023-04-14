@@ -6,6 +6,8 @@ public class WiseSay {
     private String content;
     private String author;
 
+    public WiseSay() {
+    }
 
     public WiseSay(int index, String author, String content) {
         this.index = index;

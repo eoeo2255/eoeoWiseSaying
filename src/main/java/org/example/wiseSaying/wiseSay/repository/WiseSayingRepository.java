@@ -1,8 +1,8 @@
 package org.example.wiseSaying.wiseSay.repository;
 
+import org.example.wiseSaying.Container;
 import org.example.wiseSaying.wiseSay.entity.WiseSay;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingRepository {
@@ -12,7 +12,7 @@ public class WiseSayingRepository {
 
     public WiseSayingRepository() {
         this.index = 0;
-        this.book = new ArrayList<>();
+        this.book = Container.getUtil().readJson();
     }
 
     public List<WiseSay> findAll() {
