@@ -1,25 +1,18 @@
-package org.example.wiseSaying.wiseSay.Service;
+package org.example.wiseSaying.wiseSay.repository;
 
 import org.example.wiseSaying.wiseSay.entity.WiseSay;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class WiseSayingService {
+public class WiseSayingRepository {
+
     private int index;
     private List<WiseSay> book;
 
-    public WiseSayingService(int index, List<WiseSay> book) {
-        this.index = index;
-        this.book = book;
-    }
-
-    public int write(String content, String author) {
-        WiseSay say = new WiseSay(index, content, author);
-
-        book.add(say);
-        index++;
-
-        return index;
+    public WiseSayingRepository() {
+        this.index = 0;
+        this.book = new ArrayList<>();
     }
 
     public List<WiseSay> findAll() {
@@ -42,5 +35,14 @@ public class WiseSayingService {
     public void update(WiseSay wiseSay, String content, String author) {
         wiseSay.setContent(content);
         wiseSay.setAuthor(author);
+    }
+
+    public int write(String content, String author) {
+        WiseSay say = new WiseSay(index, content, author);
+
+        book.add(say);
+        index++;
+
+        return index;
     }
 }

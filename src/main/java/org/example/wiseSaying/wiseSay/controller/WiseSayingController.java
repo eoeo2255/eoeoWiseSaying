@@ -2,7 +2,7 @@ package org.example.wiseSaying.wiseSay.controller;
 
 import org.example.wiseSaying.Container;
 import org.example.wiseSaying.Rq;
-import org.example.wiseSaying.wiseSay.Service.WiseSayingService;
+import org.example.wiseSaying.wiseSay.service.WiseSayingService;
 import org.example.wiseSaying.wiseSay.entity.WiseSay;
 
 import java.util.List;
