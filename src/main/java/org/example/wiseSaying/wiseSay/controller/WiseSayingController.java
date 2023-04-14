@@ -3,7 +3,7 @@ package org.example.wiseSaying.wiseSay.controller;
 import org.example.wiseSaying.Container;
 import org.example.wiseSaying.Rq;
 import org.example.wiseSaying.wiseSay.service.WiseSayingService;
-import org.example.wiseSaying.wiseSay.entity.WiseSay;
+import org.example.wiseSaying.wiseSay.entity.WiseSaying;
 
 import java.util.List;
 
@@ -29,17 +29,17 @@ public class WiseSayingController {
     }
 
     public void list() {
-        List<WiseSay> book = wiseSayingService.findAll();
+        List<WiseSaying> book = wiseSayingService.findAll();
 
         System.out.println("번호 / 작가 / 명언");
         System.out.println("-".repeat(30));
 
-        for (WiseSay wiseSay : book) {
-            System.out.printf("%d / %s / %s\n", wiseSay.getIndex(), wiseSay.getContent(), wiseSay.getAuthor());
+        for (WiseSaying wiseSaying : book) {
+            System.out.printf("%d / %s / %s\n", wiseSaying.getIndex(), wiseSaying.getContent(), wiseSaying.getAuthor());
         }
     }
 
-    public List<WiseSay> getList() {
+    public List<WiseSaying> getList() {
         return wiseSayingService.findAll();
     }
 
@@ -51,14 +51,14 @@ public class WiseSayingController {
             System.out.println("id는 정수로 입력해주세요.");
             return;
         }
-        WiseSay wiseSay = wiseSayingService.findBtIndex(index);
+        WiseSaying wiseSaying = wiseSayingService.findBtIndex(index);
 
-        if (wiseSay == null) {
+        if (wiseSaying == null) {
             System.out.printf("%d번 명언은 존재하지 않습니다.\n",index);
             return;
         }
 
-        wiseSayingService.remove(wiseSay);
+        wiseSayingService.remove(wiseSaying);
 
         System.out.printf("%d번 명언이 삭제되었습니다.\n", index);
     }
@@ -71,22 +71,22 @@ public class WiseSayingController {
             return;
         }
 
-        WiseSay wiseSay = wiseSayingService.findBtIndex(index);
+        WiseSaying wiseSaying = wiseSayingService.findBtIndex(index);
 
-        if (wiseSay == null) {
+        if (wiseSaying == null) {
             System.out.printf("%d번 명언은 존재하지 않습니다.\n", index);
             return;
         }
 
-        System.out.printf("기존 명언 : %s\n", wiseSay.getContent());
+        System.out.printf("기존 명언 : %s\n", wiseSaying.getContent());
         System.out.print("명언 : ");
         String content = Container.getSc().nextLine().trim();
 
-        System.out.printf("기존 저자 : %s\n", wiseSay.getAuthor());
+        System.out.printf("기존 저자 : %s\n", wiseSaying.getAuthor());
         System.out.print("저자 : ");
         String author = Container.getSc().nextLine().trim();
 
-        wiseSayingService.update(wiseSay, content, author);
+        wiseSayingService.update(wiseSaying, content, author);
 
         System.out.printf("%d번 명언이 수정되었습니다.\n",index);
     }

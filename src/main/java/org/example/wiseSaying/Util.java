@@ -3,7 +3,7 @@ package org.example.wiseSaying;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.example.wiseSaying.wiseSay.entity.WiseSay;
+import org.example.wiseSaying.wiseSay.entity.WiseSaying;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,9 +50,9 @@ public class Util {
         }
     }
 
-        public List<WiseSay> readJson() {
+        public List<WiseSaying> readJson() {
         try {
-            List<WiseSay> book = objectMapper.readValue(new File(dbPath + "/" + tableName + extType), new TypeReference<List<WiseSay>>(){});
+            List<WiseSaying> book = objectMapper.readValue(new File(dbPath + "/" + tableName + extType), new TypeReference<List<WiseSaying>>(){});
             return book;
         } catch (IOException e) {
             throw new RuntimeException(e);

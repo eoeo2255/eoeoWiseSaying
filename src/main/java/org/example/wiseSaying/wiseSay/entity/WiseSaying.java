@@ -1,15 +1,15 @@
 package org.example.wiseSaying.wiseSay.entity;
 
-public class WiseSay {
+public class WiseSaying {
     private int index;
 
     private String content;
     private String author;
 
-    public WiseSay() {
+    public WiseSaying() {
     }
 
-    public WiseSay(int index, String author, String content) {
+    public WiseSaying(int index, String author, String content) {
         this.index = index;
         this.author = author;
         this.content = content;
